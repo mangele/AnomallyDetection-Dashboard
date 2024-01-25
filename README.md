@@ -3,6 +3,9 @@
 This Streamlit application is designed to help on the analsys of CANlogs by using unsupervised learning 
 and feature importance.
 
+
+[![Watch the video](https://example.com/video_thumbnail.png)](https://example.com/link_to_your_video)
+
 ## Prerequisites
 
 Before running the application, ensure you have the following prerequisites installed:
@@ -16,7 +19,7 @@ Before running the application, ensure you have the following prerequisites inst
 
    ```bash
    git clone https://github.com/mangele/AnomallyDetection-Dashboard
+   
+   streamlit run app.py
    ```
-## Running the Application
-```streamlit run app.py
-```
+
