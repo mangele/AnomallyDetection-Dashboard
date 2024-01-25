@@ -1,4 +1,4 @@
-# Can Packege Anomaly Analyser README
+# CanLog Analyser README
 
 This Streamlit application is designed to help on the analsys of CANlogs by using unsupervised learning 
 and feature importance.
@@ -15,7 +15,7 @@ Before running the application, ensure you have the following prerequisites inst
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone [repository_url]
+   git clone https://github.com/mangele/AnomallyDetection-Dashboard
    ```
 ## Running the Application
 ```streamlit run app.py
