@@ -4,7 +4,7 @@ This Streamlit application is designed to help on the analsys of CANlogs by usin
 and feature importance.
 
 
-[![Watch the video](https://example.com/video_thumbnail.png)](https://example.com/link_to_your_video)
+[![Watch the video]()](./video1180150128.mp4)
 
 ## Prerequisites
 
