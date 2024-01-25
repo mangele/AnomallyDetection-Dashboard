@@ -1,0 +1,34 @@
+{
+    "YEAR_TO_FILTER": 2020,
+    "AGGREGATION_METHOD": "median",
+    "FEATURE_IMPORTANCE_METHOD": "cross-validation",
+    "DATA_CONFIG": {
+        "ccu": {
+            "path": "/mnt/c/Users/miguel.retamozo/OneDrive - Tritium Pty Ltd/Documents/DA_2020_dataset/all2020.csv",
+            "drop_columns": ["log_filename", "series_id", "timestamp_tz", "timestamp", "charger_model", "ticks", "serial_number", "board_type", "rt-ccu_info_serialnumber",
+		    		"rt-ccu_chargeerror_value", "rt-ccu_chargeerror1_value","rt-ccu_chargeerror2_value","rt-ccu_chargeerror3_value", "rt-ccu_chargeerror4_value"]
+        },
+        "iso": {
+            "path": "/mnt/c/Users/miguel.retamozo/OneDrive - Tritium Pty Ltd/Documents/DA_2020_dataset/data/iso_2020_after.csv",
+            "drop_columns": ["log_filename", "series_id", "timestamp", "charger_model", "ticks", "board_type", "serial_number", "error_code", "head_unit", "wsiso_info_serialnumber"]
+        },
+        "ts": {
+            "path": "/mnt/c/Users/miguel.retamozo/OneDrive - Tritium Pty Ltd/Documents/DA_2020_dataset/data/ts_2020_after.csv",
+            "drop_columns": ["log_filename", "series_id", "timestamp", "charger_model", "ticks", "board_type", "serial_number", "error_code", "ts_info_serialnumber", "head_unit", "ts_info_serialnumber"]
+        },
+        "wsgt": {
+            "path": "/mnt/c/Users/miguel.retamozo/OneDrive - Tritium Pty Ltd/Documents/DA_2020_dataset/data/wsgt_2020_after.csv",
+            "drop_columns": ["log_filename", "series_id", "timestamp", "charger_model", "ticks", "board_type", "serial_number", "error_code", "head_unit", "wsgt_info_serialnumber"]
+        },
+        "q7": {
+            "path": "/mnt/c/Users/miguel.retamozo/OneDrive - Tritium Pty Ltd/Documents/DA_2020_dataset/data/q7_2020.csv",
+            "drop_columns": ["log_filename", "series_id", "timestamp", "charger_model", "ticks", "board_type", "serial_number", "error_code", "head_unit", "q7_info_serialnumber", "q7_serialnumber"]
+        },
+        "fp": {
+            "path": "/mnt/c/Users/miguel.retamozo/OneDrive - Tritium Pty Ltd/Documents/DA_2020_dataset/data/fp_2020.csv",
+            "drop_columns": ["log_filename", "series_id", "timestamp", "charger_model", "ticks", "board_type", "serial_number", "error_code", "head_unit", "fp_info_serialnumber"]
+        }
+    }
+}
+
+
