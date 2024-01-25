@@ -1,6 +1,7 @@
-# Streamlit App README
+# Can Packege Anomaly Analyser README
 
-This Streamlit application is designed to [provide a brief description of what your app does].
+This Streamlit application is designed to help on the analsys of CANlogs by using unsupervised learning 
+and feature importance.
 
 ## Prerequisites
 
