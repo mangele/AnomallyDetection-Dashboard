@@ -4,7 +4,7 @@ This Streamlit application is designed to help on the analsys of CANlogs by usin
 and feature importance.
 
 
-[![Watch the video](./dash.png)](https://github.com/mangele/AnomallyDetection-Dashboard/blob/main/output.gif)
+[![Watch the video](https://github.com/mangele/AnomallyDetection-Dashboard/blob/main/output.gif)]
 
 ## Prerequisites
 
