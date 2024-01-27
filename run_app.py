@@ -1,11 +1,8 @@
 import streamlit as st
 import yaml
 from yaml.loader import SafeLoader
-from pathlib import Path
-import pickle
 import pandas as pd
 import altair as alt
-import numpy as np
 
 import streamlit_authenticator as stauth
 from datetime import datetime
@@ -21,7 +18,9 @@ def load_data(file_path):
 def get_unique_session_ids(data1, data2):
     # Find common session_ids in both datasets
     common_ids = set(data1['session_id']).intersection(set(data2['session_id']))
-    return list(common_ids)
+    common = list(common_ids)
+    return common
+
 
 # Function to filter data by session_id
 def filter_data_by_session_id(data, session_id):
@@ -35,7 +34,7 @@ def get_feature_importance(data, session_id):
 def save_text(text, filename="file.txt"):
     with open(filename, "a") as file:  # 'a' mode appends to the file without overwriting
         file.write(text + "\n")
-def get_format_time(path="/home/miguel/Data%20Analytics/da/canAnalyser/results"):
+def get_format_time(path="./"):
     # Get the current time
     now = datetime.now()
     
@@ -46,6 +45,14 @@ def get_format_time(path="/home/miguel/Data%20Analytics/da/canAnalyser/results")
     filename = f"{path}/{st.session_state['username']}_{formatted_time}.csv"
     return filename
 
+
+# Function to convert session ID to a shorter format
+def shorten_session_id(session_id):
+    parts = session_id.split('/')
+    # Extract the relevant parts and join them
+    # Adjust the indices in `parts[]` as per your requirement
+    shortened = '-'.join(parts[1:4])
+    return shortened
 
 def app_function():
     st.markdown("""
@@ -65,13 +72,19 @@ def app_function():
     # Find common session IDs between both datasets
     common_session_ids = get_unique_session_ids(data_permutation, data_kfold)
 
+    # Create a mapping of shortened session IDs to full session IDs
+    session_id_mapping = {shorten_session_id(sid): sid for sid in common_session_ids}
+
 
     # Two-column layout
     left_col, right_col = st.columns([2, 4])  # Adjust the ratio as needed
 
     # Left column for the selectbox
     with left_col:
-        selected_session_id = st.selectbox("Select Session ID", common_session_ids)
+        # Create a selectbox with shortened session IDs
+        selected_short_session_id = st.selectbox("Select Session ID", list(session_id_mapping.keys()))
+        selected_session_id = session_id_mapping[selected_short_session_id]
+#        selected_session_id = st.selectbox("Select Session ID", selected_short_session_id)
         error_code = selected_session_id.split("-")[-1]
         date = selected_session_id.split("/")[-1].split("_")[0]
 
@@ -218,7 +231,7 @@ if authentication_status:
     st.sidebar.write("\n\n\n")
 
     # Place the logout button
-    st.sidebar.title(f"   Hi {name.split(' ')[0]}")
+    st.sidebar.title(f"Hi {name.split(' ')[0]}")
 
     # Continue with the rest of the app
     app_function() 

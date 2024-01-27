@@ -16,10 +16,10 @@ Before running the application, ensure you have the following prerequisites inst
 ## Settings up
 1. Data
    ```bash
-   Send email to mgl.retamozo@gmail.com asking for data to analyse.
+   Send an email to mgl.retamozo@gmail.com asking for the data to analyse.
    ```
 
-2. Cloning and instalation
+2. Cloning and installation
 
    ```bash
    git clone https://github.com/mangele/AnomallyDetection-Dashboard
