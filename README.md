@@ -10,16 +10,27 @@ and feature importance.
 
 Before running the application, ensure you have the following prerequisites installed:
 
-- Python 3.6+
+- Python 3.8+
 - pip (Python package manager)
 
-## Installation
+## Settings up
+1. Data
+   ```bash
+   Send email to mgl.retamozo@gmail.com asking for data to analyse.
+   ```
 
-1. Clone this repository to your local machine:
+2. Cloning and instalation
 
    ```bash
    git clone https://github.com/mangele/AnomallyDetection-Dashboard
-   
-   streamlit run app.py
+   python3.8 -m venv env
+   source env/bin/activate
+   python install -r requirements.txt
+   streamlit run run_app.py
    ```
-
+3. Authentication
+   ```bash
+   username: mretamozo
+   password: 1qaz5thn
+   ```
+	
