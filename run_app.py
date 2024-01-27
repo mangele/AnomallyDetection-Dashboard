@@ -6,7 +6,6 @@ import pickle
 import pandas as pd
 import altair as alt
 import numpy as np
-import dask.dataframe as dd
 
 import streamlit_authenticator as stauth
 from datetime import datetime
@@ -46,30 +45,6 @@ def get_format_time(path="/home/miguel/Data%20Analytics/da/canAnalyser/results")
     # Create the filename
     filename = f"{path}/{st.session_state['username']}_{formatted_time}.csv"
     return filename
-
-@st.cache_resource
-def read_and_filter_dask(file_path, session_id, signal):
-    # Specify data types for columns where Dask's inference fails
-    dtype = {
-        'rt-ccu_controlmaster': 'object',
-        'rt-ccu_currentchargetype': 'object',
-        'rt-ccu_currentlimitflags': 'object',
-        'rt-ccu_dynamicpowerlimit': 'object',
-        'rt-ccu_powerlimitflags': 'object',
-        'rt-ccu_saeresponcecode': 'object',
-        'rt-ccu_voltagelimitflags': 'object'
-    }
-
-    # Read the CSV file using Dask with specified data types
-    ddf = dd.read_csv(file_path, dtype=dtype)
-    # Filter the DataFrame based on session_id and keep it as a DataFrame
-    filtered_ddf = ddf[ddf['filename'] == session_id][[signal, "ticks"]]
-
-    # Sort the filtered DataFrame by 'ticks'
-    sorted_ddf = filtered_ddf.sort_values('ticks')  # Sorting by a single column
-
-    # Compute the Dask DataFrame to get a Pandas DataFrame
-    return sorted_ddf.compute()
 
 
 def app_function():
@@ -189,9 +164,9 @@ def app_function():
         board = feature_option.split("_")[0].split("-")[-1]
 	    
         if board == "ccu":
-            filename = f"/home/miguel/Data%20Analytics/da/canLog/{board.upper()}/{selected_session_id.split('/')[-1]}_RT-{board.upper()}.csv"
+            filename = f"/home/mgl/phd/AnomallyDetection-Dashboard/canLog/{board.upper()}/{selected_session_id.split('/')[-1]}_RT-{board.upper()}.csv"
         else:
-            filename = f"/home/miguel/Data%20Analytics/da/canLog/{board.upper()}/{selected_session_id.split('/')[-1]}_{board.upper()}.csv"
+            filename = f"/home/mgl/phd/AnomallyDetection-Dashboard/canLog/{board.upper()}/{selected_session_id.split('/')[-1]}_{board.upper()}.csv"
 
         canLog = load_data(filename)
 	
@@ -215,9 +190,9 @@ def app_function():
 
 
 # Main app
-st.set_page_config(layout="wide", page_icon="/home/miguel/Data%20Analytics/da/canAnalyser/icon.png" )
+st.set_page_config(layout="wide", page_icon="logo.png" )
 
-with open('../configAuth.yaml') as file:
+with open('./configAuth.yaml') as file:
     config = yaml.load(file, Loader=SafeLoader)
 authenticator =  stauth.Authenticate(
     config['credentials'],

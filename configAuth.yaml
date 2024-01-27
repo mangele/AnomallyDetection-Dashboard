@@ -1,0 +1,17 @@
+credentials:
+  usernames:
+    mretamozo:
+      email: mretamozo@tritium.com.au
+      name: Miguel Retamozo
+      password: $2b$12$k0M3VTintIvSX9UNYzOK/e8u1o9vdjGXkzpCFmsBrN/iCXLr9ood.
+    gibarra:
+      email: gibarra@tritium.com.au
+      name: German Ibarra
+      password: $2b$12$XwkAk1A7kgqQJUOvA76A3.wr1n7vn3/oPRSh6q8UPyyAKKtA3g52a
+cookie:
+  expiry_days: 30
+  key: "1qaz5thn"
+  name: abcd
+preauthorized:
+  emails:
+  - mgl.retamozo@gmail.com
