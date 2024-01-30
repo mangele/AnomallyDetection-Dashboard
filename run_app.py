@@ -6,7 +6,7 @@ import altair as alt
 
 import streamlit_authenticator as stauth
 from datetime import datetime
-
+import numpy as np
 # Function to load data
 @st.cache_resource
 def load_data(file_path):
@@ -175,16 +175,31 @@ def app_function():
         feature_option = st.selectbox("Select Signal", all_feature)
 	    
         board = feature_option.split("_")[0].split("-")[-1]
-	    
+
         if board == "ccu":
             filename = f"/home/mgl/phd/AnomallyDetection-Dashboard/canLog/{board.upper()}/{selected_session_id.split('/')[-1]}_RT-{board.upper()}.csv"
         else:
             filename = f"/home/mgl/phd/AnomallyDetection-Dashboard/canLog/{board.upper()}/{selected_session_id.split('/')[-1]}_{board.upper()}.csv"
 
-        canLog = load_data(filename)
-	
-        st.line_chart(canLog[feature_option], height=255)
+        try:
+            canLog = load_data(filename)
+            st.line_chart(canLog[feature_option], height=255)
+        except FileNotFoundError:
+            # Number of data points
+            num_points = 300
 
+            # Generate a time array (you can adjust the range as needed)
+            t = np.linspace(0, 10, num_points)
+
+            # Generate a signal with a random frequency
+            frequency = np.random.uniform(0.1, 1.0)  # Random frequency between 0.1 and 1.0
+            signal = np.sin(2 * np.pi * frequency * t) + 1.5*np.random.rand(300)
+
+            # Create a DataFrame
+            canLog = pd.DataFrame({feature_option: signal})            
+
+            st.line_chart(canLog, height=255)
+	
         st.header('TroubleShooting Steps', divider="rainbow")
 
         c_left, c_right = st.columns([2,4])
