@@ -14,21 +14,17 @@ Before running the application, ensure you have the following prerequisites inst
 - pip (Python package manager)
 
 ## Settings up
-1. Data
-   ```bash
-   Send an email to mgl.retamozo@gmail.com asking for the data to analyse.
-   ```
 
-2. Cloning and installation
+1. Cloning and installation
 
    ```bash
    git clone https://github.com/mangele/AnomallyDetection-Dashboard
    python3.8 -m venv env
    source env/bin/activate
-   python install -r requirements.txt
+   pip install -r requirements.txt
    streamlit run run_app.py
    ```
-3. Authentication
+2. Authentication
    ```bash
    username: mretamozo
    password: 1qaz5thn
